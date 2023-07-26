@@ -270,14 +270,28 @@
 
     <!-- CONTENT -->
     <section>
+        <?php
+        if (session()->getFlashdata('ok')) { ?>
+            <div class="alert alert-success">
+                <strong style="color: green;"><?= session()->getFlashdata('ok'); ?>.</strong>
+            </div>
+        <?php
+        }
+        if (session()->getFlashdata('fail')) { ?>
+            <div class="alert alert-danger">
+                <strong style="color: red;"><?= session()->getFlashdata('fail'); ?>.</strong>
+            </div>
+        <?php
+        } ?>
+
         <form action="<?php echo site_url('simpan-peserta'); ?>" method="POST">
             <div style="width: 100%; margin: 5px;">
                 <label for="InputNama" class="label-lom">Nama Peserta</label>
-                <input type="text" name="nama" id="nama" class="form-input">
+                <input type="text" name="nama" id="nama" class="form-input" required>
             </div>
             <div style="width: 100%; margin: 5px;">
                 <label for="InputJenis" class="label-lom">Jenis Lomba</label>
-                <select name="jenis_lomba" id="jenis_lomba" class="form-input">
+                <select name="jenis_lomba" id="jenis_lomba" class="form-input" required>
                     <option value="1">Balap Karung, Tarik Tambang, Pecah Air, Tangkap Belut, Lari Kelereng</option>
                     <option value="2">Tarik Tambang, Pecah Air, Tangkap Belut, Lari Kelereng</option>
                     <option value="3">Pecah Air, Tangkap Belut, Lari Kelereng</option>
